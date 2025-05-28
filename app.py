@@ -51,15 +51,15 @@ def run_ml_app():
     # Create form structure
     st.subheader("Please fill in the following details to predict diamond price")
     left,right = st.columns((2,2))
-    carat = left.number_input(label = 'Carat', min_value=0.0)
+    carat = left.number_input(label = 'Carat', min_value=0.00)
     cut = right.selectbox('Cut Quality',('Fair','Good','Very Good','Premium','Ideal'))
     color = left.selectbox('Color',('J','I','H','G','F','E','D'))
     clarity = right.selectbox('Clarity',('I1','SI2','SI1','VS2','VS1','VVS2','VVS1','IF'))
-    depth = left.number_input(label = 'Total Depth Percentage', min_value=0.0)
-    table = right.number_input(label = 'Table', min_value=0)
-    x = left.number_input(label = 'Length (mm)', min_value=0)
-    y = right.number_input(label = 'Width (mm)', min_value=0)
-    z = left.number_input(label = 'Depth (mm)', min_value=0)
+    depth = left.number_input(label = 'Total Depth Percentage', min_value=0.00)
+    table = right.number_input(label = 'Table', min_value=0.00)
+    x = left.number_input(label = 'Length (mm)', min_value=0.00)
+    y = right.number_input(label = 'Width (mm)', min_value=0.00)
+    z = left.number_input(label = 'Depth (mm)', min_value=0.00)
     button = st.button("Predict Diamond Price")
     #If button is clicked
     if button:
