@@ -95,7 +95,8 @@ def predict(carat, cut, color, clarity, depth, table, x, y, z):
     #Making prediction
     log_prediction = LGBR_Model.predict(df_predict)
     result = np.expm1(log_prediction)[0]  # Inverse log transformation
-    return result
+    # Round result to 2 decimal places
+    return round(result,2)
 
 if __name__ == "__main__":
     main()
