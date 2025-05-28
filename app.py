@@ -51,15 +51,15 @@ def run_ml_app():
     # Create form structure
     st.subheader("Please fill in the following details to predict diamond price")
     left,right = st.columns((2,2))
-    carat = left.number_input(label = 'Carat', min_value=0.00)
+    carat = left.number_input(label = 'Carat', min_value=0.001)
     cut = right.selectbox('Cut Quality',('Fair','Good','Very Good','Premium','Ideal'))
     color = left.selectbox('Color',('J','I','H','G','F','E','D'))
     clarity = right.selectbox('Clarity',('I1','SI2','SI1','VS2','VS1','VVS2','VVS1','IF'))
-    depth = left.number_input(label = 'Total Depth Percentage', min_value=0.00)
-    table = right.number_input(label = 'Table', min_value=0.00)
-    x = left.number_input(label = 'Length (mm)', min_value=0.00)
-    y = right.number_input(label = 'Width (mm)', min_value=0.00)
-    z = left.number_input(label = 'Depth (mm)', min_value=0.00)
+    depth = left.number_input(label = 'Total Depth Percentage', min_value=0.001)
+    table = right.number_input(label = 'Table', min_value=0.001)
+    x = left.number_input(label = 'Length (mm)', min_value=0.001)
+    y = right.number_input(label = 'Width (mm)', min_value=0.001)
+    z = left.number_input(label = 'Depth (mm)', min_value=0.001)
     button = st.button("Predict Diamond Price")
     #If button is clicked
     if button:
@@ -95,8 +95,8 @@ def predict(carat, cut, color, clarity, depth, table, x, y, z):
     #Making prediction
     log_prediction = LGBR_Model.predict(df_predict)
     result = np.expm1(log_prediction)[0]  # Inverse log transformation
-    # Round result to 2 decimal places
-    return round(result,2)
+    # Round result to 3 decimal places
+    return round(result,3)
 
 if __name__ == "__main__":
     main()
