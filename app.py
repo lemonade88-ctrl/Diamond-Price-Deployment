@@ -6,8 +6,8 @@ import numpy as np
 from sklearn import preprocessing, sklearn
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 
-with open('lgbr_model.pkl', 'rb') as file:
-    LGBR_Model = pickle.load(file)
+with open('xgbr_model.pkl', 'rb') as file:
+    XGBR_Model = pickle.load(file)
     
 with open('feature_columns.pkl', 'rb') as file:
     feature_columns = pickle.load(file)
@@ -93,7 +93,7 @@ def predict(carat, cut, color, clarity, depth, table, x, y, z):
     df_predict = scaler.transform(df_predict[feature_columns])
 
     #Making prediction
-    log_prediction = LGBR_Model.predict(df_predict)
+    log_prediction = XGBR_Model.predict(df_predict)
     result = np.expm1(log_prediction)[0]  # Inverse log transformation
     # Round result to 3 decimal places
     return round(result,3)
