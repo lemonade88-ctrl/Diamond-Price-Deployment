@@ -80,7 +80,7 @@ def predict(carat, cut, color, clarity, depth, table, x, y, z):
         'z': z
     }
     df_predict = pd.DataFrame([input])
-    df_predict = df_predict.drop(columns=['depth', 'table'], errors='ignore')
+    df_predict = df_predict.drop(columns=['depth'], errors='ignore')
     
     # Encoding ordinal features
     df_predict[['cut', 'color', 'clarity']] = encoder.fit_transform(
